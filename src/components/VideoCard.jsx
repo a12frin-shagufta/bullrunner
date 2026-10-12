@@ -51,9 +51,10 @@ export default function VideoCard({
       </div>
 
       {/* Caption row under the card */}
-      <p className="mt-4 flex flex-wrap items-center gap-x-2 text-[12px] text-muted">
-        <span>Latest video</span>
-        <span aria-hidden="true">·</span>
+            {/* Caption row under the card */}
+      <p className="mt-4 flex flex-nowrap items-center gap-x-2 overflow-hidden whitespace-nowrap text-[12px] text-muted">
+        <span className="hidden sm:inline">Latest video</span>
+        <span aria-hidden="true" className="hidden sm:inline">·</span>
         <a href={articleHref} className="font-semibold text-brand hover:underline">
           Read the article
         </a>

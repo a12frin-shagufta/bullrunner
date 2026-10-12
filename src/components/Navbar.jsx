@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'Latest', href: '#latest' },
-  { label: 'XRP', href: '#xrp' },
-  { label: 'Altcoins', href: '#altcoins' },
-  { label: 'Security', href: '#security' },
-  { label: 'About', href: '#about' },
+  { label: 'Home', to: '/' },
+  { label: 'Latest', to: '/#latest' },
+  { label: 'XRP', to: '/xrp' },
+  { label: 'Altcoins', to: '/altcoins' },
+  { label: 'Security', to: '/security' },
+  { label: 'About', to: '/about' },
 ]
 
 export default function Navbar() {
@@ -17,21 +18,26 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-ink/90 backdrop-blur-md">
       <nav className="mx-auto flex h-22 max-w-7xl items-center justify-between px-6 lg:px-10">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2.5 text-white">
+        <Link to="/" className="flex items-center gap-2.5 text-white">
           <img src={logo} alt="Bullrunners" className="h-6 w-auto" />
-          <span className="text-md font-extrabold tracking-tight">BULLRUNNERS</span>
-        </a>
+          <span className="text-xl font-extrabold tracking-tight">BULLRUNNERS</span>
+        </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-9 lg:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
-                className="text-[17px] font-medium text-white/85 transition-colors hover:text-brand"
+              <NavLink
+                to={link.to}
+                end
+                className={({ isActive }) =>
+                  `text-[15px] font-medium transition-colors hover:text-brand ${
+                    isActive ? 'text-white' : 'text-white/60'
+                  }`
+                }
               >
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -39,7 +45,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <a
           href="#review"
-          className="hidden rounded-full bg-brand px-7 py-3.5 text-[17px] font-bold text-ink transition-colors hover:bg-brand-strong lg:inline-flex"
+          className="hidden rounded-full bg-brand px-6 py-3 text-[15px] font-bold text-ink transition-colors hover:bg-brand-strong lg:inline-flex"
         >
           Free Portfolio Review
         </a>
@@ -68,23 +74,24 @@ export default function Navbar() {
           <ul className="flex flex-col py-2">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <NavLink
+                  to={link.to}
+                  end
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-lg font-medium text-white/85 hover:text-brand"
+                  className={({ isActive }) =>
+                    `block py-3 text-lg font-medium hover:text-brand ${
+                      isActive ? 'text-white' : 'text-white/70'
+                    }`
+                  }
                 >
                   {link.label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
-          <a
-            href="#review"
-            onClick={() => setOpen(false)}
-            className="mt-2 block rounded-full bg-brand px-6 py-3.5 text-center text-base font-bold text-ink"
-          >
-            Free Portfolio Review
-          </a>
+          {/* No CTA here — the hero already shows one right below the menu
+              on phones, and two identical green buttons stacked looks like
+              a mistake. The desktop nav keeps its CTA. */}
         </div>
       )}
     </header>

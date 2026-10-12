@@ -1,4 +1,4 @@
-import CountUp from './Countup'
+import CountUp from './CountUp'
 import logo from '../assets/logo.png'
 
 function ShareIcon(props) {
@@ -77,7 +77,7 @@ export default function Stats() {
   return (
     // Less top padding than bottom: the hero already contributes its own
     // bottom padding, so a symmetrical py- here doubles into a big gap.
-    <section className="relative overflow-hidden pb-20 pt-10 lg:pb-28 lg:pt-14">
+    <section className="relative overflow-hidden pb-10 pt-10 lg:pb-14 lg:pt-14">
       {/* Static green glow — 900x620 circle centred on the section.
           No animation: it's a single radial-gradient, nothing more. */}
       <div
@@ -94,36 +94,35 @@ export default function Stats() {
             src={logo}
             alt=""
             aria-hidden="true"
-            className="relative z-10 h-16 w-auto sm:h-20"
+            className="relative z-10 h-12 w-auto sm:h-15"
           />
         </div>
 
-        <h2 className="mx-auto -mt-2 max-w-4xl text-center text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+        <h2 className="mx-auto -mt-2 max-w-3xl text-center text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl lg:text-[2.70rem]">
           Over a decade of crypto coverage,{' '}
           <span className="text-brand">followed by hundreds of thousands.</span>
         </h2>
 
-        {/* 1 column on phones, 2 from sm up (no lg:grid-cols-4).
-            max-w keeps the cards from stretching too wide on desktop —
-            drop it if you want them to fill the full container. */}
-        <ul className="mx-auto mt-14 grid max-w-4xl gap-5 sm:grid-cols-2">
+        {/* 2 columns at EVERY width — grid-cols-2 has no breakpoint prefix.
+            Card internals shrink below sm so they still fit a 375px screen. */}
+        <ul className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-3 sm:mt-14 sm:gap-5">
           {STATS.map((stat, i) => {
             const Icon = stat.icon
             return (
               <li
                 key={stat.label}
-                className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition-colors hover:border-brand/25"
+                className="rounded-2xl border border-white/8 bg-white/[0.02] p-4 transition-colors hover:border-brand/25 sm:p-6"
               >
                 <div className="flex items-start justify-between">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-brand/30 text-brand">
-                    <Icon className="h-5 w-5" />
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-brand/30 text-brand sm:h-11 sm:w-11">
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </span>
                   <span className="text-xs font-medium tabular-nums text-white/25">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
 
-                <p className="mt-7 text-[2.75rem] font-extrabold leading-none tracking-tight text-brand">
+                <p className="mt-5 text-[1.60rem] font-extrabold leading-none tracking-tight text-brand sm:mt-7 sm:text-[2.70rem]">
                   <CountUp
                     value={stat.value}
                     decimals={stat.decimals || 0}
@@ -131,11 +130,11 @@ export default function Stats() {
                   />
                 </p>
 
-                <p className="mt-3 text-sm font-bold uppercase tracking-wide text-white">
+                <p className="mt-2.5 text-[11px] font-bold uppercase leading-snug tracking-wide text-white sm:mt-3 sm:text-sm">
                   {stat.label}
                 </p>
 
-                <p className="mt-2 text-sm leading-relaxed text-white/50">{stat.note}</p>
+                <p className="mt-1.5 text-xs leading-relaxed text-white/50 sm:mt-2 sm:text-sm">{stat.note}</p>
               </li>
             )
           })}

@@ -19,26 +19,26 @@ const TYPE = {
   eyebrow: 'text-xs sm:text-xs lg:text-sm',
 
   // main headline — 28px phone / 40px tablet / 52px desktop
-  heading: 'text-[1.75rem] sm:text-[2.5rem] lg:text-[3.25rem]',
+  heading: 'text-[1.65rem] sm:text-[2rem] lg:text-[3rem]',
 
   // line-height: tighter as the text gets bigger
-  headingLeading: 'leading-[1.12] sm:leading-[1.08]',
+  headingLeading: 'leading-[1.19] sm:leading-[1.08]',
 
   // how wide the headline is allowed to run (desktop only).
   // lower the number = earlier wrap = more lines
-  headingWidth: 'lg:max-w-[13ch]',
+  headingWidth: 'lg:max-w-[12ch]',
 
   // paragraph under the headline
-  body: 'text-[15px] sm:text-base lg:text-[17px]',
+  body: 'text-[13px] sm:text-base lg:text-[15px]',
 
   // button label
-  cta: 'text-[15px] sm:text-base',
+  cta: 'text-[14px] sm:text-base',
 
   // "4.9" score
-  score: 'text-[15px] sm:text-base',
+  score: 'text-[14px] sm:text-base',
 
   // "TRUSTPILOT RATING"
-  ratingLabel: 'text-[10px] sm:text-[11px]',
+  ratingLabel: 'text-[8px] sm:text-[10px]',
 }
 
 const SPACE = {
