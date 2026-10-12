@@ -1,4 +1,4 @@
-import CountUp from './CountUp'
+import CountUp from './Countup'
 import logo from '../assets/logo.png'
 
 function ShareIcon(props) {
