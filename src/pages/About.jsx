@@ -1,5 +1,5 @@
-import TeamCarousel from '../components/TeamCarousel'
-import { TEAM } from '../data/team'
+import TeamCarousel from '../components/Teamcarousel'
+import { TEAM } from '../data/Team'
 
 export default function About() {
   return (
