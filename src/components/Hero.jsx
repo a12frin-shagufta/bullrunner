@@ -16,10 +16,10 @@ import VideoCard from './VideoCard'
    ──────────────────────────────────────────────────────────────── */
 const TYPE = {
   // small green label above the headline
-  eyebrow: 'text-xs sm:text-sm lg:text-md',
+  eyebrow: 'text-xs sm:text-xs lg:text-sm',
 
   // main headline — 28px phone / 40px tablet / 52px desktop
-  heading: 'text-[1.60rem] sm:text-[2.5rem] lg:text-[3.20rem]',
+  heading: 'text-[1.75rem] sm:text-[2.5rem] lg:text-[3.25rem]',
 
   // line-height: tighter as the text gets bigger
   headingLeading: 'leading-[1.12] sm:leading-[1.08]',
@@ -29,7 +29,7 @@ const TYPE = {
   headingWidth: 'lg:max-w-[13ch]',
 
   // paragraph under the headline
-  body: 'text-[13px] sm:text-base lg:text-[15px]',
+  body: 'text-[15px] sm:text-base lg:text-[17px]',
 
   // button label
   cta: 'text-[15px] sm:text-base',
@@ -98,7 +98,7 @@ export default function Hero() {
     >
       <DotWave />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-8 pt-10 lg:px-10 lg:pb-10 lg:pt-14">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           {/* Left column — copy */}
           <div>

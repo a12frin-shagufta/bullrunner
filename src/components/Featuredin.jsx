@@ -68,7 +68,7 @@ export default function FeaturedIn({ logos = [], heading = 'Quoted & published i
 
   return (
     <div className="mt-9 border-t border-white/10 pt-5">
-      <h2 className="mb-3.5 text-xs font-bold uppercase tracking-[0.12em] text-[#8b9ab1]">
+      <h2 className="mb-3.5 text-xs font-bold uppercase tracking-[0.12em] text-[#8b9ab1] ">
         {heading}
       </h2>
 

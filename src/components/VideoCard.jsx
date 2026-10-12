@@ -51,7 +51,7 @@ export default function VideoCard({
       </div>
 
       {/* Caption row under the card */}
-      <p className="mt-4 flex flex-wrap items-center gap-x-2 text-[15px] text-muted">
+      <p className="mt-4 flex flex-wrap items-center gap-x-2 text-[12px] text-muted">
         <span>Latest video</span>
         <span aria-hidden="true">·</span>
         <a href={articleHref} className="font-semibold text-brand hover:underline">

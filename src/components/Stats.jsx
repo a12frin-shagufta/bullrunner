@@ -75,7 +75,9 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section className="relative overflow-hidden py-20 lg:py-28">
+    // Less top padding than bottom: the hero already contributes its own
+    // bottom padding, so a symmetrical py- here doubles into a big gap.
+    <section className="relative overflow-hidden pb-20 pt-10 lg:pb-28 lg:pt-14">
       {/* Static green glow — 900x620 circle centred on the section.
           No animation: it's a single radial-gradient, nothing more. */}
       <div
@@ -92,16 +94,19 @@ export default function Stats() {
             src={logo}
             alt=""
             aria-hidden="true"
-            className="relative z-10 h-10 w-auto sm:h-14"
+            className="relative z-10 h-16 w-auto sm:h-20"
           />
         </div>
 
-        <h2 className="mx-auto -mt-2 max-w-4xl text-center text-3xl font-extrabold leading-[1.13] tracking-tight text-white sm:text-4xl lg:text-[2.70rem]">
+        <h2 className="mx-auto -mt-2 max-w-4xl text-center text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
           Over a decade of crypto coverage,{' '}
           <span className="text-brand">followed by hundreds of thousands.</span>
         </h2>
 
-        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* 1 column on phones, 2 from sm up (no lg:grid-cols-4).
+            max-w keeps the cards from stretching too wide on desktop —
+            drop it if you want them to fill the full container. */}
+        <ul className="mx-auto mt-14 grid max-w-4xl gap-5 sm:grid-cols-2">
           {STATS.map((stat, i) => {
             const Icon = stat.icon
             return (
@@ -118,7 +123,7 @@ export default function Stats() {
                   </span>
                 </div>
 
-                <p className="mt-7 text-[2rem] font-extrabold leading-none tracking-tight text-brand">
+                <p className="mt-7 text-[2.75rem] font-extrabold leading-none tracking-tight text-brand">
                   <CountUp
                     value={stat.value}
                     decimals={stat.decimals || 0}
