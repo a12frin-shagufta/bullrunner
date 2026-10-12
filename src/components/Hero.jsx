@@ -1,6 +1,6 @@
-import DotWave from './Dotwave'
-import FeaturedIn from './Featuredin'
-import VideoCard from './VideoCard'
+import DotWave from "./Dotwave";
+import FeaturedIn from "./Featuredin";
+import VideoCard from "./VideoCard";
 
 /* ────────────────────────────────────────────────────────────────
    RESPONSIVE TEXT — edit everything here, not in the JSX below.
@@ -16,67 +16,105 @@ import VideoCard from './VideoCard'
    ──────────────────────────────────────────────────────────────── */
 const TYPE = {
   // small green label above the headline
-  eyebrow: 'text-xs sm:text-xs lg:text-sm',
+  eyebrow: "text-xs sm:text-xs lg:text-sm",
 
   // main headline — 28px phone / 40px tablet / 52px desktop
-  heading: 'text-[1.65rem] sm:text-[2rem] lg:text-[3rem]',
+  heading: "text-[1.65rem] sm:text-[2rem] lg:text-[3rem]",
 
   // line-height: tighter as the text gets bigger
-  headingLeading: 'leading-[1.19] sm:leading-[1.08]',
+  headingLeading: "leading-[1.19] sm:leading-[1.08]",
 
   // how wide the headline is allowed to run (desktop only).
   // lower the number = earlier wrap = more lines
-  headingWidth: 'lg:max-w-[12ch]',
+  headingWidth: "lg:max-w-[12ch]",
 
   // paragraph under the headline
-  body: 'text-[13px] sm:text-base lg:text-[15px]',
+  body: "text-[13px] sm:text-base lg:text-[15px]",
 
   // button label
-  cta: 'text-[14px] sm:text-base',
+  cta: "text-[14px] sm:text-base",
 
   // "4.9" score
-  score: 'text-[14px] sm:text-base',
+  score: "text-[14px] sm:text-base",
 
   // "TRUSTPILOT RATING"
-  ratingLabel: 'text-[8px] sm:text-[10px]',
-}
+  ratingLabel: "text-[8px] sm:text-[10px]",
+};
 
 const SPACE = {
   // vertical rhythm — same mobile-first idea
-  headingTop: 'mt-3 sm:mt-4',
-  bodyTop: 'mt-4 sm:mt-5',
-  ctaTop: 'mt-6 sm:mt-7',
-  pillTop: 'mt-6 sm:mt-7',
-}
+  headingTop: "mt-3 sm:mt-4",
+  bodyTop: "mt-4 sm:mt-5",
+  ctaTop: "mt-6 sm:mt-7",
+  pillTop: "mt-6 sm:mt-7",
+};
 
 // Swap these for real customer photos later — src can be any image URL.
 // Drop real logo files into public/press/ and point src at them.
 // Any entry without a src falls back to rendering its name as text.
 const PRESS = [
-  { name: 'CoinDesk', src: 'https://bullrunners-site.pages.dev/press/coindesk.svg', w: '8rem' },
-  { name: 'New York Post', src: 'https://bullrunners-site.pages.dev/press/new-york-post.png', w: '11rem' },
-  { name: 'MoneyLion', src: 'https://bullrunners-site.pages.dev/press/moneylion.webp', w: '10rem' },
-  { name: 'Yahoo Finance', src: 'https://bullrunners-site.pages.dev/press/yahoo-finance.svg', w: '10rem' },
-  { name: 'FOX 13', src: 'https://bullrunners-site.pages.dev/press/fox13.svg', w: '8rem' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/aol.png' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/invezz.png' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/technewsworld.png' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/insidesources.png' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/frederick-news-post.png' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/techtimes.svg' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/blockleaders.png' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/daily-upside.svg' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/techround.svg' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/analytics-insight.svg' },
-]
+  {
+    name: "CoinDesk",
+    src: "https://bullrunners-site.pages.dev/press/coindesk.svg",
+    w: "8rem",
+  },
+  {
+    name: "New York Post",
+    src: "https://bullrunners-site.pages.dev/press/new-york-post.png",
+    w: "11rem",
+  },
+  {
+    name: "MoneyLion",
+    src: "https://bullrunners-site.pages.dev/press/moneylion.webp",
+    w: "10rem",
+  },
+  {
+    name: "Yahoo Finance",
+    src: "https://bullrunners-site.pages.dev/press/yahoo-finance.svg",
+    w: "10rem",
+  },
+  {
+    name: "FOX 13",
+    src: "https://bullrunners-site.pages.dev/press/fox13.svg",
+    w: "8rem",
+  },
+  { name: "", src: "https://bullrunners-site.pages.dev/press/aol.png" },
+  { name: "", src: "https://bullrunners-site.pages.dev/press/invezz.png" },
+  {
+    name: "",
+    src: "https://bullrunners-site.pages.dev/press/technewsworld.png",
+  },
+  {
+    name: "",
+    src: "https://bullrunners-site.pages.dev/press/insidesources.png",
+  },
+  {
+    name: "",
+    src: "https://bullrunners-site.pages.dev/press/frederick-news-post.png",
+  },
+  { name: "", src: "https://bullrunners-site.pages.dev/press/techtimes.svg" },
+  {
+    name: "",
+    src: "https://bullrunners-site.pages.dev/press/blockleaders.png",
+  },
+  {
+    name: "",
+    src: "https://bullrunners-site.pages.dev/press/daily-upside.svg",
+  },
+  { name: "", src: "https://bullrunners-site.pages.dev/press/techround.svg" },
+  {
+    name: "",
+    src: "https://bullrunners-site.pages.dev/press/analytics-insight.svg",
+  },
+];
 
 const AVATARS = [
-  { initials: 'JM', bg: '#3f6212' },
-  { initials: 'AR', bg: '#1e3a5f' },
-  { initials: 'TK', bg: '#4a3418' },
-  { initials: 'SD', bg: '#3b2f4a' },
-  { initials: 'LP', bg: '#1f4037' },
-]
+  { initials: "JM", bg: "#3f6212" },
+  { initials: "AR", bg: "#1e3a5f" },
+  { initials: "TK", bg: "#4a3418" },
+  { initials: "SD", bg: "#3b2f4a" },
+  { initials: "LP", bg: "#1f4037" },
+];
 
 function Stars() {
   return (
@@ -87,7 +125,7 @@ function Stars() {
         </svg>
       ))}
     </span>
-  )
+  );
 }
 
 export default function Hero() {
@@ -117,9 +155,10 @@ export default function Hero() {
             <p
               className={`${SPACE.bodyTop} ${TYPE.body} max-w-lg leading-relaxed text-white/65`}
             >
-              Get a one-on-one review of your crypto from our research team. We'll show
-              you what's exposed, what's sitting idle, and your next best move. It's
-              free, there's no pressure, and we never ask for your keys or seed phrase.
+              Get a one-on-one review of your crypto from our research team.
+              We'll show you what's exposed, what's sitting idle, and your next
+              best move. It's free, there's no pressure, and we never ask for
+              your keys or seed phrase.
             </p>
 
             <a
@@ -130,15 +169,18 @@ export default function Hero() {
             </a>
 
             {/* Social proof pill */}
+                       {/* Social proof pill */}
             <div
-              className={`${SPACE.pillTop} inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-2 rounded-3xl border border-white/10 bg-white/[0.03] px-3 py-2 sm:gap-3 sm:rounded-full sm:pl-2.5 sm:pr-5`}
+              className={`${SPACE.pillTop} inline-flex max-w-full flex-nowrap items-center gap-x-2.5 whitespace-nowrap rounded-3xl border border-white/10 bg-white/[0.03] px-2.5 py-2 sm:gap-3 sm:rounded-full sm:pl-2.5 sm:pr-5`}
             >
-              <div className="flex -space-x-2">
-                {AVATARS.map((a) => (
+              <div className="flex shrink-0 -space-x-2">
+                {AVATARS.map((a, i) => (
                   <span
                     key={a.initials}
                     style={{ backgroundColor: a.bg }}
-                    className="flex h-7 w-7 items-center justify-center rounded-full text-[9px] font-bold text-white/90 ring-2 ring-ink sm:h-8 sm:w-8 sm:text-[10px]"
+                    className={`${
+                      i >= 3 ? 'hidden sm:flex' : 'flex'
+                    } h-7 w-7 items-center justify-center rounded-full text-[9px] font-bold text-white/90 ring-2 ring-ink sm:h-8 sm:w-8 sm:text-[10px]`}
                   >
                     {a.initials}
                   </span>
@@ -147,13 +189,13 @@ export default function Hero() {
 
               <Stars />
 
-              <span className={`${TYPE.score} font-bold text-white`}>4.9</span>
+              <span className={`${TYPE.score} shrink-0 font-bold text-white`}>4.9</span>
 
               {/* divider only makes sense while everything is on one line */}
               <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden="true" />
 
               <span
-                className={`${TYPE.ratingLabel} font-semibold uppercase tracking-[0.12em] text-muted sm:tracking-[0.14em]`}
+                className={`${TYPE.ratingLabel} shrink-0 font-semibold uppercase tracking-[0.12em] text-muted sm:tracking-[0.14em]`}
               >
                 Trustpilot rating
               </span>
@@ -169,5 +211,5 @@ export default function Hero() {
         <FeaturedIn logos={PRESS} />
       </div>
     </section>
-  )
+  );
 }
