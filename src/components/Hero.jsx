@@ -2,6 +2,53 @@ import DotWave from './Dotwave'
 import FeaturedIn from './Featuredin'
 import VideoCard from './VideoCard'
 
+/* ────────────────────────────────────────────────────────────────
+   RESPONSIVE TEXT — edit everything here, not in the JSX below.
+
+   Tailwind breakpoints used:
+     (none) = phones, 0px and up      — this is the base size
+     sm:    = 640px and up  (big phones / small tablets)
+     lg:    = 1024px and up (laptops / desktop)
+
+   Tailwind is mobile-first: an unprefixed class applies at EVERY
+   width, and sm:/lg: override it upward. So always write the phone
+   size first, then scale up.
+   ──────────────────────────────────────────────────────────────── */
+const TYPE = {
+  // small green label above the headline
+  eyebrow: 'text-xs sm:text-sm lg:text-md',
+
+  // main headline — 28px phone / 40px tablet / 52px desktop
+  heading: 'text-[1.60rem] sm:text-[2.5rem] lg:text-[3.20rem]',
+
+  // line-height: tighter as the text gets bigger
+  headingLeading: 'leading-[1.12] sm:leading-[1.08]',
+
+  // how wide the headline is allowed to run (desktop only).
+  // lower the number = earlier wrap = more lines
+  headingWidth: 'lg:max-w-[13ch]',
+
+  // paragraph under the headline
+  body: 'text-[13px] sm:text-base lg:text-[15px]',
+
+  // button label
+  cta: 'text-[15px] sm:text-base',
+
+  // "4.9" score
+  score: 'text-[15px] sm:text-base',
+
+  // "TRUSTPILOT RATING"
+  ratingLabel: 'text-[10px] sm:text-[11px]',
+}
+
+const SPACE = {
+  // vertical rhythm — same mobile-first idea
+  headingTop: 'mt-3 sm:mt-4',
+  bodyTop: 'mt-4 sm:mt-5',
+  ctaTop: 'mt-6 sm:mt-7',
+  pillTop: 'mt-6 sm:mt-7',
+}
+
 // Swap these for real customer photos later — src can be any image URL.
 // Drop real logo files into public/press/ and point src at them.
 // Any entry without a src falls back to rendering its name as text.
@@ -11,19 +58,18 @@ const PRESS = [
   { name: 'MoneyLion', src: 'https://bullrunners-site.pages.dev/press/moneylion.webp', w: '10rem' },
   { name: 'Yahoo Finance', src: 'https://bullrunners-site.pages.dev/press/yahoo-finance.svg', w: '10rem' },
   { name: 'FOX 13', src: 'https://bullrunners-site.pages.dev/press/fox13.svg', w: '8rem' },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/aol.png', },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/invezz.png',  },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/technewsworld.png', },
-  {name: '', src: 'https://bullrunners-site.pages.dev/press/insidesources.png', },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/frederick-news-post.png', },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/techtimes.svg', },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/blockleaders.png',  },
-  { name: '', src: 'https://bullrunners-site.pages.dev/press/daily-upside.svg', },
-  {  name: '', src: 'https://bullrunners-site.pages.dev/press/techround.svg', },
-  {  name: '', src: 'https://bullrunners-site.pages.dev/press/analytics-insight.svg', },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/aol.png' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/invezz.png' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/technewsworld.png' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/insidesources.png' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/frederick-news-post.png' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/techtimes.svg' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/blockleaders.png' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/daily-upside.svg' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/techround.svg' },
+  { name: '', src: 'https://bullrunners-site.pages.dev/press/analytics-insight.svg' },
 ]
 
- 
 const AVATARS = [
   { initials: 'JM', bg: '#3f6212' },
   { initials: 'AR', bg: '#1e3a5f' },
@@ -31,7 +77,7 @@ const AVATARS = [
   { initials: 'SD', bg: '#3b2f4a' },
   { initials: 'LP', bg: '#1f4037' },
 ]
- 
+
 function Stars() {
   return (
     <span className="flex items-center gap-0.5" aria-hidden="true">
@@ -43,7 +89,7 @@ function Stars() {
     </span>
   )
 }
- 
+
 export default function Hero() {
   return (
     <section
@@ -51,36 +97,42 @@ export default function Hero() {
       className="relative flex min-h-[calc(100svh-5.5rem)] items-center overflow-hidden"
     >
       <DotWave />
- 
+
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           {/* Left column — copy */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
+            <p
+              className={`${TYPE.eyebrow} font-bold uppercase tracking-[0.18em] text-brand`}
+            >
               Free Crypto Portfolio Review
             </p>
- 
-            {/* max-w only kicks in from lg — on phones the headline should use
-                the full column width instead of being squeezed into 4 lines */}
-            <h1 className="mt-3 text-[1.75rem] font-extrabold leading-[1.12] tracking-tight text-white sm:text-[2.5rem] sm:leading-[1.08] lg:max-w-[13ch] lg:text-[3.25rem]">
+
+            <h1
+              className={`${SPACE.headingTop} ${TYPE.heading} ${TYPE.headingLeading} ${TYPE.headingWidth} font-extrabold tracking-tight text-white`}
+            >
               Secure, grow and scale your crypto portfolio, without guessing.
             </h1>
- 
-            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/65 sm:mt-5 sm:text-base">
+
+            <p
+              className={`${SPACE.bodyTop} ${TYPE.body} max-w-lg leading-relaxed text-white/65`}
+            >
               Get a one-on-one review of your crypto from our research team. We'll show
               you what's exposed, what's sitting idle, and your next best move. It's
               free, there's no pressure, and we never ask for your keys or seed phrase.
             </p>
- 
+
             <a
               href="#review"
-              className="mt-6 inline-flex w-full justify-center rounded-full bg-brand px-6 py-3.5 text-[15px] font-bold text-ink transition-colors hover:bg-brand-strong sm:mt-7 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+              className={`${SPACE.ctaTop} ${TYPE.cta} inline-flex w-full justify-center rounded-full bg-brand px-6 py-3.5 font-bold text-ink transition-colors hover:bg-brand-strong sm:w-auto sm:px-8 sm:py-4`}
             >
               Book My Free Portfolio Review
             </a>
- 
+
             {/* Social proof pill */}
-            <div className="mt-6 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-2 rounded-3xl border border-white/10 bg-white/[0.03] px-3 py-2 sm:mt-7 sm:gap-3 sm:rounded-full sm:pl-2.5 sm:pr-5">
+            <div
+              className={`${SPACE.pillTop} inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-2 rounded-3xl border border-white/10 bg-white/[0.03] px-3 py-2 sm:gap-3 sm:rounded-full sm:pl-2.5 sm:pr-5`}
+            >
               <div className="flex -space-x-2">
                 {AVATARS.map((a) => (
                   <span
@@ -92,29 +144,30 @@ export default function Hero() {
                   </span>
                 ))}
               </div>
- 
+
               <Stars />
- 
-              <span className="text-[15px] font-bold text-white sm:text-base">4.9</span>
- 
+
+              <span className={`${TYPE.score} font-bold text-white`}>4.9</span>
+
               {/* divider only makes sense while everything is on one line */}
               <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden="true" />
- 
-              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted sm:text-[11px] sm:tracking-[0.14em]">
+
+              <span
+                className={`${TYPE.ratingLabel} font-semibold uppercase tracking-[0.12em] text-muted sm:tracking-[0.14em]`}
+              >
                 Trustpilot rating
               </span>
             </div>
           </div>
- 
+
           {/* Right column — video */}
           <div>
             <VideoCard videoId="KiE7z7NSadE" title="Friend or foe?" />
           </div>
         </div>
- 
+
         <FeaturedIn logos={PRESS} />
       </div>
     </section>
   )
 }
- 
