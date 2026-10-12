@@ -32,7 +32,7 @@ export default function Latest({ posts = POSTS, heading = 'Latest' }) {
               className="rounded-full border border-white/15 bg-white/[0.03] px-8 py-3.5 text-base font-bold text-white transition-colors hover:border-brand/40 hover:text-brand"
             >
               All posts
-              <span className="ml-2 font-medium text-white/40">({remaining})</span>
+        
             </button>
           </div>
         )}
